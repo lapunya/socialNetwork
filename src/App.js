@@ -13,7 +13,7 @@ import UsersContainer from './components/users/users-container';
 
 const App = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/social-network">
       <div className='app-wrapper'>
         <Header />
         <Sidebar/>
