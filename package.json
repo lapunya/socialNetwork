@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "gh-pages": "^3.2.3",
-    "homepage": "https://lapunya.github.io/social-network/",
+    "homepage": "https://lapunya.github.io/socialNetwork/",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
