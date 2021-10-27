@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './nav.module.css';
 import { NavLink } from 'react-router-dom';
 

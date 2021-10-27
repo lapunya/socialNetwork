@@ -1,3 +1,4 @@
+import React from 'react';
 import FriendsContainer from "./friends/friends-container";
 import Nav from "./nav/nav";
 import classes from "./sidebar.module.css"
