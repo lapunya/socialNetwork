@@ -1,0 +1,17 @@
+.friends {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.friendsTitle {
+    font-size: 30px;
+    color: brown;
+}
+
+.friendsList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+}

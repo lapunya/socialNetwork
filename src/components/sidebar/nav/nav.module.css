@@ -1,0 +1,14 @@
+.navList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.link {
+  color: blue;
+  text-decoration: none;
+}
+
+.active {
+  color: white;
+}

@@ -1,0 +1,38 @@
+.user {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.leftBox {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userPhoto {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.mainBox {
+    width: 600px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.mainInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+}

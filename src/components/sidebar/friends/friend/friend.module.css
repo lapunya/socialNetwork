@@ -1,0 +1,17 @@
+.friend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+}
+
+.friendAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+}
+
+.friendName {
+    font-size: 18px;
+    text-transform: uppercase;
+}

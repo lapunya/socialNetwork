@@ -1,0 +1,42 @@
+.dialogs {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-template-rows: 40fr 40fr;
+    grid-template-areas: 
+    "users messages"
+    "users newMessage";
+}
+
+.dialogsUserList {
+    grid-area: users;
+    list-style: none;
+    padding: 0;
+}
+
+.dialogsUserItem {
+}
+
+.dialogsUserLink {
+    color: red;
+}
+
+.active {
+    color: gold;
+}
+
+.dialogsMessageList {
+    grid-area: messages;
+    padding: 0;
+}
+
+.dialogsMessageItem {
+    border: 1px solid black;
+    max-width: 250px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.newMessageBox {
+    grid-area: newMessage;
+}
