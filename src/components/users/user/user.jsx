@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./user.module.css"
+import userPhoto from "../../../assets/images/user.png"
 
 const User = (props) => {
 
@@ -11,7 +12,7 @@ const User = (props) => {
     return (
         <div className={classes.user}>
             <div className={classes.leftBox}>
-                <img className={classes.userPhoto} src={props.ava} alt="" />
+                <img className={classes.userPhoto} src={props.ava ? props.ava : userPhoto} alt="" />
                 <button id={props.userId} onClick={switchFollow}>
                     {props.followed ? 'Unfollow' : 'Follow'}
                 </button>
@@ -22,8 +23,8 @@ const User = (props) => {
                     <span>{props.status}</span>
                 </div>
                 <div className={classes.location}>
-                    <span>{props.country}</span>
-                    <span>{props.city}</span>
+                    <span>Country</span>
+                    <span>City</span>
                 </div>
             </div>
 

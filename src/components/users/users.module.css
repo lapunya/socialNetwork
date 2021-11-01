@@ -1,3 +1,11 @@
 .users {
     padding: 20px;
 }
+
+.simplePage {
+    font-weight: 400;
+}
+
+.selectedPage {
+    font-weight: 700;
+}

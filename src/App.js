@@ -6,7 +6,7 @@ import News from './components/news/news';
 import Music from './components/music/music';
 import Settings from './components/settings/settings';
 import { Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import Sidebar from './components/sidebar/sidebar';
 import DialogsContainer from './components/dialogs/dialogs-container';
 import UsersContainer from './components/users/users-container';
@@ -14,7 +14,7 @@ import UsersContainer from './components/users/users-container';
 
 const App = (props) => {
   return (
-    <BrowserRouter basename="/socialNetwork">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className='app-wrapper'>
         <Header />
         <Sidebar/>
