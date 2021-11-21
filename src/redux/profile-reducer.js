@@ -1,5 +1,8 @@
+import { profileApi } from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST = 'UPDATE-POST';
+const SET_PROFILE = 'SET_PROFILE';
 
 let initialState = {
     postContent: [
@@ -9,7 +12,9 @@ let initialState = {
         { id: 4, postText: 'Or masturbate', likesCount: 8 }
     ],
 
-    realTimePost: ''
+    realTimePost: '',
+    ava: '',
+    description: 'Hello'
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -39,6 +44,14 @@ const profileReducer = (state = initialState, action) => {
 
             return stateCopy;
         }
+
+        case SET_PROFILE: {
+            return {
+                ...state,
+                ava: action.profile.photos.small,
+                description: action.profile.aboutMe
+            }
+        }
         
         default:
             return state;
@@ -46,6 +59,16 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostActionCreator = () => ({type: ADD_POST});
-export const updatePostTextActionCreator = (newPostText) => ({type: UPDATE_POST, newPostText: newPostText});
+export const updatePostTextActionCreator = (newPostText) => ({type: UPDATE_POST, newPostText});
+export const setProfile = (profile) => ({type: SET_PROFILE, profile});
+
+export const getProfileDataThunk = (userId) => {
+    return (dispatch) => {
+        profileApi.getProfileData(userId)
+        .then(data => {
+            dispatch(setProfile(data));
+        })
+    }
+}
 
 export default profileReducer;

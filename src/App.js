@@ -1,25 +1,25 @@
 import React from 'react';
 import './App.css';
-import Header from './components/header/header';
-import Profile from './components/profile/profile';
 import News from './components/news/news';
 import Music from './components/music/music';
 import Settings from './components/settings/settings';
 import { Route } from 'react-router';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
 import Sidebar from './components/sidebar/sidebar';
 import DialogsContainer from './components/dialogs/dialogs-container';
 import UsersContainer from './components/users/users-container';
+import ProfileContainer from './components/profile/profile-container';
+import HeaderContainer from './components/header/header-container';
+import Login from './components/login/login';
 
 
 const App = (props) => {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className='app-wrapper'>
-        <Header />
+        <HeaderContainer />
         <Sidebar/>
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={ () => <Profile/>} />
+          <Route path='/login' render={ () => <Login/>} />
+          <Route path='/profile/:userId?' render={ () => <ProfileContainer/>} />
           <Route path='/dialogs' render={ () => <DialogsContainer/>} />
           <Route path='/users' render={ () => <UsersContainer/>} />
           <Route path='/news' component={News} />
@@ -27,7 +27,6 @@ const App = (props) => {
           <Route path='/settings' component={Settings} />
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 

@@ -5,7 +5,9 @@ import classes from "./users.module.css";
 const Users = (props) => {
 
     let getResultContent = () => {
-        let resultUsersContent = props.users.map(el => <User key={el.id} ava={el.photos.small} status={el.status} switchFollow={props.switchFollow} userId={el.id} userName={el.name} followed={el.followed}/>);
+        let resultUsersContent = props.users.map(el => <User key={el.id} ava={el.photos.small} status={el.status} 
+                                                        userId={el.id} userName={el.name} followed={el.followed}
+                                                        followingInProgress={props.followingInProgress} followThunkCreator={props.followThunkCreator}/>);
         return resultUsersContent;
     }
 

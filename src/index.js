@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
@@ -10,9 +11,11 @@ import { Provider } from 'react-redux';
 let renderPage = (state) => {
   ReactDOM.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <App/>
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App/>
+        </Provider>
+      </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
   );

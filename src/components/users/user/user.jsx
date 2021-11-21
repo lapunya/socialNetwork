@@ -1,19 +1,17 @@
 import React from "react";
 import classes from "./user.module.css"
 import userPhoto from "../../../assets/images/user.png"
+import { NavLink } from "react-router-dom";
 
 const User = (props) => {
-
-    let switchFollow = (el) => {
-        let userId = el.target.id;
-        props.switchFollow(userId);
-    }
 
     return (
         <div className={classes.user}>
             <div className={classes.leftBox}>
-                <img className={classes.userPhoto} src={props.ava ? props.ava : userPhoto} alt="" />
-                <button id={props.userId} onClick={switchFollow}>
+                <NavLink to={'/profile/' + props.userId}>
+                    <img className={classes.userPhoto} src={props.ava ? props.ava : userPhoto} alt="" />
+                </NavLink>
+                <button disabled={props.followingInProgress.some(id => props.userId === id)} id={props.userId} onClick={() => {props.followThunkCreator(props.userId);}}>
                     {props.followed ? 'Unfollow' : 'Follow'}
                 </button>
             </div>

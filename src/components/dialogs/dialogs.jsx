@@ -20,7 +20,9 @@ const Dialogs = (props) => {
         props.onChangeMessage(changedMessage);
     };
 
+
     return (
+        
         <div className={classes.dialogs}>
             <ul className={classes.dialogsUserList}>
                 {resultDialogData}
@@ -40,5 +42,8 @@ const Dialogs = (props) => {
         </div>
     );
 }
+
+
+
 
 export default Dialogs;
