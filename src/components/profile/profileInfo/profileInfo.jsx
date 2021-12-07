@@ -1,5 +1,7 @@
 import React from 'react';
 import classes from './profileInfo.module.css';
+import ProfileStatus from './profileStatus';
+import userPhoto from "../../../assets/images/user.png"
 
 const ProfileInfo = (props) => {
     return (
@@ -8,10 +10,13 @@ const ProfileInfo = (props) => {
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS62oOaTrZg_IOaAlV7_Qupw6liiJpMWRcpbQ&usqp=CAU'/>
             </div>
             <div>
-                <img src={props.profilePage.ava}/>
+                <img className={classes.userAva} src={props.profilePage.ava ? props.profilePage.ava : userPhoto}/>
             </div>
             <div>
                 <span>{props.profilePage.description}</span>
+            </div>
+            <div>
+                <ProfileStatus status={props.profilePage.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );

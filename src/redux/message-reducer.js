@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 
 let initialState = {
     
@@ -16,9 +15,7 @@ let initialState = {
         { id: 1, messageText: 'How' },
         { id: 2, messageText: 'U' },
         { id: 3, messageText: 'Doin' }
-    ],
-
-    realTimeMessage: ''
+    ]
 };
 
 const messageReducer = (state = initialState, action) => {
@@ -30,27 +27,26 @@ const messageReducer = (state = initialState, action) => {
             let lastMessage = stateCopy.dialogContent[stateCopy.dialogContent.length-1];
             let newMessage = {
                 id: lastMessage.id + 1,
-                messageText: stateCopy.realTimeMessage
+                messageText: action.messageText
             };
 
             stateCopy.dialogContent.push(newMessage);
-            stateCopy.realTimeMessage = '';
 
             return stateCopy;
         }
         
-        case UPDATE_MESSAGE: {
-            return {
-                ...state,
-                realTimeMessage: action.newMessageText
-            }
+        // case UPDATE_MESSAGE: {
+        //     return {
+        //         ...state,
+        //         realTimeMessage: action.newMessageText
+        //     }
 
-            // let stateCopy = {...state};
+        //     // let stateCopy = {...state};
 
-            // 
-            // stateCopy.realTimeMessage = updatedMessage;
-            // return stateCopy;
-        }
+        //     // 
+        //     // stateCopy.realTimeMessage = updatedMessage;
+        //     // return stateCopy;
+        // }
             
 
         default:
@@ -58,7 +54,7 @@ const messageReducer = (state = initialState, action) => {
     }
 };
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const onChangeMessageActionCreator = (newMessageText) => ({type: UPDATE_MESSAGE, newMessageText: newMessageText});
+export const addMessageActionCreator = (messageText) => ({type: ADD_MESSAGE, messageText});
+//export const onChangeMessageActionCreator = (newMessageText) => ({type: UPDATE_MESSAGE, newMessageText: newMessageText});
 
 export default messageReducer;

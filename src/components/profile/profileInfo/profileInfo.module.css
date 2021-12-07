@@ -1,0 +1,13 @@
+.userAva {
+    width: 100px;
+    height: 100px;
+}
+
+.statusSpan {
+    display: inline-block;
+    min-width: 100px;
+    min-height: 25px;
+    background-color: transparent;
+    border: 1px solid indigo;
+    border-radius: 5px;
+}

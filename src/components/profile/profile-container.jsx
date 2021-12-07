@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getProfileDataThunk } from "../../redux/profile-reducer";
+import { getProfileDataThunk, getProfileStatusThunk, updateProfileStatusThunk } from "../../redux/profile-reducer";
 import PostsContainer from './posts/posts-container';
 import ProfileInfo from './profileInfo/profileInfo';
 import { withRouter } from 'react-router';
@@ -14,16 +14,17 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId;
         
         if (!userId) {
-            userId = 2;
+            userId = 20450;
         }
         this.props.getProfileDataThunk(userId);
+        this.props.getProfileStatusThunk(userId);
     }
 
     render() {
         
         return (
             <div>
-                <ProfileInfo profilePage={this.props.profilePage}/>
+                <ProfileInfo profilePage={this.props.profilePage} updateStatus={this.props.updateProfileStatusThunk}/>
                 <PostsContainer/>
             </div>
         );
@@ -36,4 +37,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default compose(connect(mapStateToProps, { getProfileDataThunk }), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose(connect(mapStateToProps, { getProfileDataThunk, getProfileStatusThunk, updateProfileStatusThunk }), withRouter, withAuthRedirect)(ProfileContainer);

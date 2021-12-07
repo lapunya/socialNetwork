@@ -1,8 +1,8 @@
 import { profileApi } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_POST = 'UPDATE-POST';
 const SET_PROFILE = 'SET_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     postContent: [
@@ -12,9 +12,9 @@ let initialState = {
         { id: 4, postText: 'Or masturbate', likesCount: 8 }
     ],
 
-    realTimePost: '',
     ava: '',
-    description: 'Hello'
+    description: 'Hello',
+    status: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,24 +26,23 @@ const profileReducer = (state = initialState, action) => {
             let lastPost = stateCopy.postContent[stateCopy.postContent.length - 1];
             let newPost = {
                 id: lastPost.id + 1,
-                postText: stateCopy.realTimePost,
+                postText: action.postText,
                 likesCount: 0
             };
             
             stateCopy.postContent.push(newPost);
-            stateCopy.realTimePost = '';
 
             return stateCopy;
         }
 
-        case UPDATE_POST: {
-            let stateCopy = {...state};
+        // case UPDATE_POST: {
+        //     let stateCopy = {...state};
 
-            let updatedPost = action.newPostText;
-            stateCopy.realTimePost = updatedPost;
+        //     let updatedPost = action.newPostText;
+        //     stateCopy.realTimePost = updatedPost;
 
-            return stateCopy;
-        }
+        //     return stateCopy;
+        // }
 
         case SET_PROFILE: {
             return {
@@ -52,15 +51,23 @@ const profileReducer = (state = initialState, action) => {
                 description: action.profile.aboutMe
             }
         }
+
+        case SET_STATUS: {
+            return {
+                ...state,
+                status: action.status
+            }
+        }
         
         default:
             return state;
     }
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updatePostTextActionCreator = (newPostText) => ({type: UPDATE_POST, newPostText});
+export const addPostActionCreator = (postText) => ({type: ADD_POST, postText});
+//export const updatePostTextActionCreator = (newPostText) => ({type: UPDATE_POST, newPostText});
 export const setProfile = (profile) => ({type: SET_PROFILE, profile});
+export const setStatus = (status) => ({type: SET_STATUS, status});
 
 export const getProfileDataThunk = (userId) => {
     return (dispatch) => {
@@ -69,6 +76,26 @@ export const getProfileDataThunk = (userId) => {
             dispatch(setProfile(data));
         })
     }
-}
+};
+
+export const getProfileStatusThunk = (userId) => {
+    return (dispatch) => {
+        profileApi.getProfileStatus(userId)
+        .then(data => {
+            dispatch(setStatus(data));
+        })
+    }
+};
+
+export const updateProfileStatusThunk = (status) => {
+    return (dispatch) => {
+        profileApi.updateStatus(status)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
+        })
+    }
+};
 
 export default profileReducer;

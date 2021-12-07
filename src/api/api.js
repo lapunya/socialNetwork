@@ -14,6 +14,18 @@ export const profileApi = {
         return instanse
             .get(`profile/${userId}`)
             .then(response => response.data)
+    },
+    getProfileStatus(userId) {
+        return instanse
+            .get(`profile/status/${userId}`)
+            .then(response => response.data)
+    },
+    updateStatus(status) {
+        return instanse
+            .put(`profile/status`, {
+                status: status
+            })
+            .then(response => response.data)
     }
 };
 
@@ -21,6 +33,24 @@ export const authApi = {
     getAuthUserData() {
         return instanse
             .get(`auth/me`)
+            .then(response => response.data)
+    }
+};
+
+export const loginApi = {
+    getYourData(data) {
+        return instanse
+            .post(`auth/login`, {
+                email: data.email,
+                password: data.password,
+                rememberMe: data.remember
+            })
+            .then(response => response.data)
+    },
+
+    logout() {
+        return instanse
+            .delete(`auth/login`)
             .then(response => response.data)
     }
 };
