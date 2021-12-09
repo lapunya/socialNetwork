@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { required } from '../../utils/validators/validators';
 import { MyInput } from '../common/formControls/inputField';
 import { Redirect } from 'react-router';
+import classes from '../common/formControls/inputField.module.css'
 
 const LoginForm = (props) => {
     return (
@@ -19,6 +20,11 @@ const LoginForm = (props) => {
                 <Field component="input" name="rememberMe" id="rememberCheck" type="checkbox"/>
                 <label htmlFor="rememberCheck">Remember me</label>
             </div>
+            { props.error && 
+                <div className={classes.commonError}>
+                    {props.error}
+                </div>
+            }
             <div>
                 <button>Enter</button>
             </div>

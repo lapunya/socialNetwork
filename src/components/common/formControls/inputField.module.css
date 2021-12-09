@@ -9,3 +9,8 @@
 .error span {
     color: red;
 }
+
+.commonError {
+    color: red;
+    font-weight: bold;
+}
