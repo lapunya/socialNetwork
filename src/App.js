@@ -3,17 +3,29 @@ import './App.css';
 import News from './components/news/news';
 import Music from './components/music/music';
 import Settings from './components/settings/settings';
-import { Route } from 'react-router';
+import { Route, withRouter } from 'react-router';
 import Sidebar from './components/sidebar/sidebar';
 import DialogsContainer from './components/dialogs/dialogs-container';
 import UsersContainer from './components/users/users-container';
 import ProfileContainer from './components/profile/profile-container';
 import HeaderContainer from './components/header/header-container';
 import Login from './components/login/login';
+import { connect } from 'react-redux';
+import { initializeApp } from './redux/app-reducer';
+import { compose } from 'redux';
+import Preloader from './components/common/preloader/preloader';
 
 
-const App = (props) => {
-  return (
+class App extends React.Component {
+
+  componentDidMount() {
+    this.props.initializeApp();
+  }
+
+  render() {
+    if (!this.props.initialized) return <Preloader/>
+    return (
+      
       <div className='app-wrapper'>
         <HeaderContainer />
         <Sidebar/>
@@ -27,7 +39,15 @@ const App = (props) => {
           <Route path='/settings' component={Settings} />
         </div>
       </div>
-  );
+    );
+  }
+
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      initialized: state.app.initialized
+  }
+}
+
+export default compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);

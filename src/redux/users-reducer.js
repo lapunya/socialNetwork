@@ -134,7 +134,7 @@ export const followThunkCreator = (userId) => { // thunk creator - приним�
             if (data) {
                 followApi.removeSubscribe(userId)
                 .then(data => {
-                    if (data.resultCode == 0) {
+                    if (data.resultCode === 0) {
                         dispatch(toggleFollow(userId));
                     }
                     dispatch(followLoading(false, userId));
@@ -142,7 +142,7 @@ export const followThunkCreator = (userId) => { // thunk creator - приним�
             } else {
                 followApi.addSubscribe(userId)
                 .then(data => {
-                    if (data.resultCode == 0) {
+                    if (data.resultCode === 0) {
                         dispatch(toggleFollow(userId));
                     }
                     dispatch(followLoading(false, userId));
