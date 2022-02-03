@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getUsersThunkCreator, pageChangeThunkCreator, followThunkCreator } from "../../redux/users-reducer";
 import Users from "./users";
 import Preloader from "../common/preloader/preloader";
-import { getCurrentPage, getPageSize, getTotalCount, getUsers, isFollowingInProgress, isLoadingInProgress } from "../../redux/users-selector";
+import { getCurrentPage, getPageSize, getTotalCount, getUsersSelect, isFollowingInProgress, isLoadingInProgress } from "../../redux/users-selector";
 
 class UsersContainer extends React.Component {
 
@@ -34,7 +34,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: getUsers(state),
+        users: getUsersSelect(state),
         totalCount: getTotalCount(state),
         pageSize: getPageSize(state),
         currentPage: getCurrentPage(state),

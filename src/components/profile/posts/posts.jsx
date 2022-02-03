@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import { maxLengthCreator, required } from '../../../utils/validators/validators';
 import { MyTextarea } from '../../common/formControls/inputField';
 import Post from './post/post';
-import classes from './posts.module.css';
 
 const Posts = (props) => {
 
